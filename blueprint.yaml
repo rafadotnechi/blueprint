@@ -15,16 +15,16 @@ plugins:
 
 types:
     mongo_database:
-        derived_from: cloudify.types.bash.manager.db_server
+        derived_from: cloudify.types.bash.db_server
         properties:
             -   role
             -   port
 
     nodejs_server:
-        derived_from: cloudify.types.bash.manager.app_server
+        derived_from: cloudify.types.bash.app_server
 
     nodejs_app:
-        derived_from: cloudify.types.bash.manager.app_module
+        derived_from: cloudify.types.bash.app_module
         properties:
             -   app_name
             -   startup_script
