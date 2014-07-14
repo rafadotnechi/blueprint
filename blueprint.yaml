@@ -6,10 +6,16 @@ imports:
      - http://www.getcloudify.org/spec/cloudify/3.0/types.yaml
      - http://www.getcloudify.org/spec/cloudify/3.0/bash.yaml
      
+types: 
+    mongo_database:
+        derived_from: cloudify.types.bash.db_server
+        properties:
+            -   role
+            -   port
+
 blueprint:
     name: nodecellar
-    nodes:
-        -   name: nodejs_vm
+    -   name: nodejs_vm
             type: cloudify.types.host
             properties:
                     ip: 127.0.0.1
@@ -24,7 +30,7 @@ blueprint:
                         key: /home/vagrant/.ssh/cloudify_private_key
 
         - name: mongod
-          type: cloudify.bash.db_server
+          type: mongo_database
           properties:
                 role: mongod
                 port: 27017
@@ -35,5 +41,14 @@ blueprint:
           relationships:
             - target: mongod_vm
               type: cloudify.relationships.contained_in
-                    
+
+        - name: nodejs
+          type: cloudify.bash.app_server
+          properties:
+                scripts:           
+                    create: nodejs-scripts/install-nodejs.sh
+          relationships:
+            - type: cloudify.relationships.contained_in
+              target: nodejs_vm
+
 
