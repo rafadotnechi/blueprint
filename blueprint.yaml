@@ -4,7 +4,7 @@
 #
 imports:
      - http://www.getcloudify.org/spec/cloudify/3.0/types.yaml
-     
+
 blueprint:
     name: nodecellar
     nodes:
@@ -14,4 +14,10 @@ blueprint:
                     ip: 127.0.0.1
                     cloudify_agent:
                         key: /home/vagrant/.ssh/cloudify_private_key
-
+            
+        -   name: mongod_vm
+            type: cloudify.types.host
+            properties:
+                    ip: 127.0.0.1
+                    cloudify_agent:
+                        key: /home/vagrant/.ssh/cloudify_private_key
