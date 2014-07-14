@@ -5,7 +5,8 @@
 imports:
      - http://www.getcloudify.org/spec/cloudify/3.0/types.yaml
      - http://www.getcloudify.org/spec/cloudify/3.0/bash.yaml
-     
+     - nodecellar-config-plugin/plugin.yaml
+
 types:
     mongo_database:
         derived_from: cloudify.types.bash.db_server
@@ -15,7 +16,7 @@ types:
 
     nodejs_server:
         derived_from: cloudify.types.bash.app_server
-        
+
     nodejs_app:
         derived_from: cloudify.types.bash.app_module
         properties:
@@ -27,10 +28,19 @@ types:
             -   num_instances
             -   env_file_path
 
+relationships:
+    nodecellar_connected_to_mongo:
+        derived_from: cloudify.relationships.connected_to
+        source_interfaces:
+            cloudify.interfaces.relationship_lifecycle:
+                - postconfigure: nodecellar_config_plugin.tasks.get_mongo_host_and_port
+
+
+    
+
 blueprint:
     name: nodecellar
-    nodes:
-        -   name: nodejs_vm
+    -   name: nodejs_vm
             type: cloudify.types.host
             properties:
                     ip: 127.0.0.1
@@ -84,6 +94,10 @@ blueprint:
           relationships:
             - type: cloudify.relationships.contained_in
               target: nodejs
+            - type: nodecellar_connected_to_mongo
+              target: mongod  
+
+
 
 
 
