@@ -40,7 +40,8 @@ relationships:
 
 blueprint:
     name: nodecellar
-    -   name: nodejs_vm
+    nodes:
+        -   name: nodejs_vm
             type: cloudify.types.host
             properties:
                     ip: 127.0.0.1
