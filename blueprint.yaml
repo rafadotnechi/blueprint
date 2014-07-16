@@ -4,7 +4,7 @@
 #
 imports:
      - http://www.getcloudify.org/spec/cloudify/3.0/types.yaml
-     - http://www.getcloudify.org/spec/cloudify/3.0/bash.yaml
+     - http://www.getcloudify.org/spec/bash-plugin/1.0/plugin.yaml
      - nodecellar-config-plugin/plugin.yaml
 
 types:
