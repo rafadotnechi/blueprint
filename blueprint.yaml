@@ -26,6 +26,12 @@ types:
             -   base_port
             -   num_instances
             -   env_file_path
+relationships:
+    nodecellar_connected_to_mongo:
+        derived_from: cloudify.relationships.connected_to
+        source_interfaces:
+            cloudify.interfaces.relationship_lifecycle:
+                - postconfigure: nodecellar_config_plugin.tasks.get_mongo_host_and_port
      
 blueprint:
     name: nodecellar
@@ -83,3 +89,5 @@ blueprint:
             relationships:
                 -   type: cloudify.relationships.contained_in
                     target: nodejs
+                -   type: nodecellar_connected_to_mongo
+                    target: mongod  
