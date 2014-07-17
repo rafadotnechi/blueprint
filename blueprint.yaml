@@ -32,4 +32,7 @@ blueprint:
                     create: mongo-scripts/install-mongo.sh
                     start: mongo-scripts/start-mongo.sh
                     stop: mongo-scripts/stop-mongo.sh
+            relationships:
+                -   target: mongod_vm
+                    type: cloudify.relationships.contained_in
                     
