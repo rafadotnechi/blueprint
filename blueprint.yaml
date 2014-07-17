@@ -4,7 +4,8 @@
 #
 imports:
      -  http://www.getcloudify.org/spec/cloudify/3.0/types.yaml
-
+     -  http://www.getcloudify.org/spec/bash-plugin/1.0/plugin.yaml
+     
 blueprint:
     name: nodecellar
     nodes:
@@ -21,3 +22,14 @@ blueprint:
                 ip: 127.0.0.1
                 cloudify_agent:
                     key: /home/vagrant/.ssh/cloudify_private_key
+
+        -   name: mongod
+            type: cloudify.bash.db_server
+            properties:
+                role: mongod
+                port: 27017
+                scripts:           
+                    create: mongo-scripts/install-mongo.sh
+                    start: mongo-scripts/start-mongo.sh
+                    stop: mongo-scripts/stop-mongo.sh
+                    
