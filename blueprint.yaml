@@ -12,6 +12,7 @@ types:
         properties:
             -   role
             -   port
+
      
 blueprint:
     name: nodecellar
@@ -42,5 +43,12 @@ blueprint:
             relationships:
                 -   target: mongod_vm
                     type: cloudify.relationships.contained_in
-                    
 
+        -   name: nodejs
+            type: cloudify.types.bash.app_server
+            properties:
+                scripts:           
+                    create: nodejs-scripts/install-nodejs.sh
+            relationships:
+                -   type: cloudify.relationships.contained_in
+                    target: nodejs_vm
