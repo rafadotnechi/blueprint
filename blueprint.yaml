@@ -6,6 +6,13 @@ imports:
      -  http://www.getcloudify.org/spec/cloudify/3.0/types.yaml
      -  http://www.getcloudify.org/spec/bash-plugin/1.0/plugin.yaml
 
+plugins:
+    nodecellar_config_plugin:
+        derived_from: cloudify.plugins.agent_plugin
+        properties:
+            folder: nodecellar-config-plugin
+            
+
 types:
     mongo_database:
         derived_from: cloudify.types.bash.db_server
