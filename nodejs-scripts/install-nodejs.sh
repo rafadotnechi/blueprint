@@ -29,7 +29,7 @@ else
     if [[ ! -z $YUM_CMD ]]; then
         sudo yum -y install curl || exit $?   
     elif [[ ! -z $APT_GET_CMD ]]; then
-	sudo apt-get -f -y install || exit $?
+        sudo apt-get -f -y install || exit $?
         sudo apt-get -qq install curl || exit $?   
     else
         error "can't install package git"
