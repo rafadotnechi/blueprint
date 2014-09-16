@@ -2,6 +2,8 @@
 # Cloudify Blueprint which describes the nodecellar application
 # https://github.com/ccoenraets/nodecellar
 #
+tosca_definitions_version: cloudify_1_0
+
 imports:
      -  http://www.getcloudify.org/spec/cloudify/3.0/types.yaml
      -  http://www.getcloudify.org/spec/bash-plugin/1.0/plugin.yaml
