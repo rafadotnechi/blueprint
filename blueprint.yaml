@@ -8,9 +8,8 @@ imports:
 
 plugins:
     nodecellar_config:
-        derived_from: cloudify.plugins.agent_plugin
-        properties:
-            folder: nodecellar-config-plugin
+        executor: host_agent
+        source: nodecellar-config-plugin
             
 
 node_types:
