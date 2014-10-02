@@ -53,7 +53,7 @@ node_templates:
     mongod_vm:
         type: cloudify.types.host
         properties:
-            ip: 192.168.1.141
+            ip: 127.0.0.1
             cloudify_agent:
                 key: /home/vagrant/.ssh/cloudify_private_key
 
