@@ -23,8 +23,8 @@ node_types:
 
     nodejs_server:
         derived_from: cloudify.types.bash.app_server
-		properties:
-		 
+        properties:
+         
         
     nodejs_app:
         derived_from: cloudify.types.bash.app_module
