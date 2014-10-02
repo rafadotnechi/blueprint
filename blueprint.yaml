@@ -23,8 +23,6 @@ node_types:
 
     nodejs_server:
         derived_from: cloudify.types.bash.app_server
-        properties:
-         
         
     nodejs_app:
         derived_from: cloudify.types.bash.app_module
@@ -35,7 +33,6 @@ node_types:
             git_branch: {}
             base_port: {}
             num_instances: {}
-            db_host: {}
             env_file_path:
                 default: ''
 relationships:
@@ -58,7 +55,7 @@ node_templates:
         properties:
             ip: 192.168.1.148
             cloudify_agent:
-                key: /vagrant/.ssh/simplekey
+                key: /home/vagrant/.ssh/cloudify_private_key
 
     mongod:
         type: mongo_database
@@ -91,7 +88,6 @@ node_templates:
             git_branch: master
             base_port: 8080
             num_instances: 1
-            db_host: 192.168.1.148
             scripts:
                 create: nodejs-scripts/install-app.sh
                 start: nodejs-scripts/start-app.sh
