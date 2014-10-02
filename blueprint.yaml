@@ -56,7 +56,7 @@ node_templates:
     mongod_vm:
         type: cloudify.types.host
         properties:
-            ip: 192.168.1.xxx
+            ip: 192.168.1.148
             cloudify_agent:
                 key: /home/vagrant/.ssh/cloudify_private_key
 
@@ -91,7 +91,7 @@ node_templates:
             git_branch: master
             base_port: 8080
             num_instances: 1
-			db_host: 192.168.1.xxx
+			db_host: 192.168.1.148
             scripts:
                 create: nodejs-scripts/install-app.sh
                 start: nodejs-scripts/start-app.sh
