@@ -55,7 +55,7 @@ node_templates:
         properties:
             ip: 192.168.1.148
             cloudify_agent:
-                key: /home/vagrant/.ssh/cloudify_private_key
+                key: /vagrant/.ssh/simplekey
 
     mongod:
         type: mongo_database
