@@ -18,9 +18,9 @@ cd ${BASE_DIR} || exit $?
 YUM_CMD=$(which yum)
 APT_GET_CMD=$(which apt-get)
 
-MONGO_HOST=${db_host} 
+MONGO_HOST=192.168.1.148
 export MONGO_HOST
-info "MongoDB ip is:${MONGO_HOST}"
+info "MongoDB ip is:$MONGO_HOST"
 
 info "Downloading application sources to ${BASE_DIR}"
 if [ -f nodecellar ]; then
